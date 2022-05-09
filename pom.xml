@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ar.edu.utn.frba</groupId>
-	<artifactId>tpIntegrador</artifactId>
+	<artifactId>tpIntegradorLink</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>tpIntegrador</name>
+	<name>tpIntegradorLink</name>
 	<description>Tp integrador</description>
 	<properties>
 		<java.version>11</java.version>
