@@ -17,6 +17,6 @@ public class PromoMedioDePago implements Promocion{
 		if(ordenDeCompra.getMedioDePago().equals(this.medioDePago)) {
 			return ordenDeCompra.calcularPrecioTotalSinPromociones() * porcentaje;
 		}
-		return ordenDeCompra.calcularPrecioTotalSinPromociones();
+		return 0.0;
 	}
 }

@@ -18,10 +18,6 @@ public class OrdenDeCompra {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 		this.medioDePago = medioDePago;
 	}
-	public OrdenDeCompra(Collection<ItemCompra> itemsCompras) {
-		super();
-		this.itemsCompras = new ArrayList<>();
-	}
 	
 	public Collection<ItemCompra> getItemsCompras() {
 		return itemsCompras;
@@ -60,6 +56,6 @@ public class OrdenDeCompra {
 	}
 	
 	public double calcularPrecioTotalConPromociones() {
-		return promociones.stream().mapToDouble(x->x.aplicar(this)).sum();
+		return this.calcularPrecioTotalSinPromociones()-promociones.stream().mapToDouble(x->x.aplicar(this)).sum();
 	}
 }
