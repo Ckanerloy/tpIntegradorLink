@@ -1,33 +1,22 @@
 package ar.edu.utn.frba.tpIntegrador.model;
 
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
 
 public class CotizadorDolar implements Cotizador{
-private double precio;
+	private double precio;
+	RestTemplate restTemplate = new RestTemplate();
 	
 	@Override
 	public double calcularPrecio(){
-		RestTemplate nuevo = new RestTemplate();
-		try {
-			double valor =this.run(nuevo).getCompra();
-			return valor*precio;
-		}catch(Exception e){
-			//TODO Auto-generated
-			e.printStackTrace();
-		}
-		return 0.0;
+		double valor =this.run(restTemplate).getCompra();
+		return valor*precio;
 	}
 	
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
-	}
-
-	public ApiPrecioDolar run(RestTemplate restTemplate) throws Exception {
+	public ApiPrecioDolar run(RestTemplate restTemplate) {
 		ApiPrecioDolar precioActual = restTemplate.getForObject(
 		"http://api-dolar-argentina.herokuapp.com/api/dolaroficial", ApiPrecioDolar.class);
 		return precioActual;
-		}
+	}
 	
 	public CotizadorDolar(double precio) {
 		super();

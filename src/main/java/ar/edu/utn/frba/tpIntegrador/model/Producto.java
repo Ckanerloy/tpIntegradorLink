@@ -20,7 +20,12 @@ public class Producto {
 		this.stock = stock;
 		this.proveedor = proveedor;
 	}
-
+	
+	public Producto(String descripcion, String nombre ) {
+		super();
+		this.descripcion = descripcion;
+		this.nombre = nombre;
+	}
 	public double getPrecio() {
 		return cotizador.calcularPrecio();
 	}

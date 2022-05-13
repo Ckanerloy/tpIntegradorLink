@@ -88,6 +88,6 @@ public class OrdenDeCompraTest {
 		Collection<Promocion> promociones = Arrays.asList(promoMedioDePago);
 		OrdenDeCompra ordenDeCompra = new OrdenDeCompra(promociones,LocalDate.now(), MedioDePago.EFECTIVO);
 		ordenDeCompra.setItemsCompras(itemsCompras);
-		assertEquals(ordenDeCompra.calcularPrecioTotalSinPromociones(),57985.0);
+		assertEquals(ordenDeCompra.calcularPrecioTotalSinPromociones(),58350.0);
 	}
 }
