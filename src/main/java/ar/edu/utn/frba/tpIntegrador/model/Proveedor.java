@@ -10,13 +10,45 @@ public class Proveedor {
 	//private MedioDeComunicacion medioDeComunicacion;
 	
 	public Proveedor(String descripcion, String telefono, String mail, int cantidadMinima) {
-		super();
+		//super();
 		this.descripcion = descripcion;
 		this.telefono = telefono;
 		this.mail = mail;
 		this.cantidadMinima = cantidadMinima;
 	}
 	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public int getCantidadMinima() {
+		return cantidadMinima;
+	}
+
+	public void setCantidadMinima(int cantidadMinima) {
+		this.cantidadMinima = cantidadMinima;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(cantidadMinima, descripcion, mail, telefono);

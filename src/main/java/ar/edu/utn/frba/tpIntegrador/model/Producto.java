@@ -21,6 +21,16 @@ public class Producto {
 		this.proveedor = proveedor;
 	}
 	
+	public Producto( String descripcion, String nombre,Cotizador cotizador, boolean estaDisponible, int stock) {
+		super();
+		this.descripcion = descripcion;
+		this.nombre = nombre;
+		this.cotizador = cotizador;
+		this.precio= cotizador.calcularPrecio();
+		this.estaDisponible = estaDisponible;
+		this.stock = stock;
+	}
+	
 	public Producto(String descripcion, String nombre ) {
 		super();
 		this.descripcion = descripcion;
