@@ -2,7 +2,7 @@ package ar.edu.utn.frba.tpIntegrador.model;
 
 import java.util.Objects;
 
-public class Proveedor {
+public class Proveedor extends Usuario{
 	private String descripcion;
 	private String telefono;
 	private String mail;

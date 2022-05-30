@@ -5,8 +5,9 @@ public class ItemCompra {
 	private int cantidad;
 	private double precioCompra;
 		
-	public ItemCompra(Producto producto, int cantidad) {
+	public ItemCompra(Producto producto, int cantidad) throws StockInsuficienteException{
 		super();
+		producto.restarStock(cantidad);
 		this.producto = producto;
 		this.cantidad = cantidad;
 		this.precioCompra = producto.getPrecio();
@@ -32,7 +33,7 @@ public class ItemCompra {
 	}
 	
 	//Funciones
-	public double calcularPrecioItem() {
+	public double calcularPrecioItem(){
 		return this.cantidad * this.precioCompra;
 	}
 

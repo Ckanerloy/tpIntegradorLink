@@ -4,8 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Cliente {
+public class Cliente extends Usuario{
 	private String nombreYApellido;
+	private CarritoDeCompra carritoDeCompra;
 	private Collection<OrdenDeCompra> comprasRealizadas;
 	private LocalDate fechaDeNacimiento;
 	private TipoDeDocumento tipoDeDocumento;
@@ -13,10 +14,11 @@ public class Cliente {
 	private String telefono;
 	private String mail;
 	
-	public Cliente(String nombreYApellido, Collection<OrdenDeCompra> comprasRealizadas, LocalDate fechaDeNacimiento,
+	public Cliente(String nombreYApellido,CarritoDeCompra carritoDeCompra, Collection<OrdenDeCompra> comprasRealizadas, LocalDate fechaDeNacimiento,
 			TipoDeDocumento tipoDeDocumento, String nroDeDocumento, String telefono, String mail) {
 		super();
 		this.nombreYApellido = nombreYApellido;
+		this.carritoDeCompra=carritoDeCompra;
 		this.comprasRealizadas = new ArrayList<>();
 		this.fechaDeNacimiento = fechaDeNacimiento;
 		this.tipoDeDocumento = tipoDeDocumento;
@@ -29,6 +31,12 @@ public class Cliente {
 	}
 	public void setNombreYApellido(String nombreYApellido) {
 		this.nombreYApellido = nombreYApellido;
+	}
+	public CarritoDeCompra getCarritoDeCompra() {
+		return carritoDeCompra;
+	}
+	public void setCarritoDeCompra(CarritoDeCompra carritoDeCompra) {
+		this.carritoDeCompra = carritoDeCompra;
 	}
 	public Collection<OrdenDeCompra> getComprasRealizadas() {
 		return comprasRealizadas;

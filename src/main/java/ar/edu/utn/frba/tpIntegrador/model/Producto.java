@@ -5,7 +5,7 @@ public class Producto {
 	private String descripcion;
 	private String nombre;
 	private Cotizador cotizador;
-	private boolean estaDisponible;
+	//private boolean estaDisponible;
 	private int stock;
 	private Proveedor proveedor;
 	
@@ -16,7 +16,7 @@ public class Producto {
 		this.nombre = nombre;
 		this.cotizador = cotizador;
 		this.precio= cotizador.calcularPrecio();
-		this.estaDisponible = estaDisponible;
+		//this.estaDisponible = estaDisponible;
 		this.stock = stock;
 		this.proveedor = proveedor;
 	}
@@ -27,7 +27,7 @@ public class Producto {
 		this.nombre = nombre;
 		this.cotizador = cotizador;
 		this.precio= cotizador.calcularPrecio();
-		this.estaDisponible = estaDisponible;
+		//this.estaDisponible = estaDisponible;
 		this.stock = stock;
 	}
 	
@@ -56,14 +56,14 @@ public class Producto {
 		this.nombre = nombre;
 	}
 
-	public boolean isEstaDisponible() {
+/*	public boolean isEstaDisponible() {
 		return estaDisponible;
 	}
 
 	public void setEstaDisponible(boolean estaDisponible) {
 		this.estaDisponible = estaDisponible;
 	}
-
+*/
 	public int getStock() {
 		return stock;
 	}
@@ -81,10 +81,12 @@ public class Producto {
 	}
 
 	//Funciones
-	public void restarStock(int cantidad) {
-		if(stock<=cantidad) {
-			estaDisponible=false;
+
+	public void restarStock(int cantidad) throws StockInsuficienteException{
+		if(stock<cantidad){
+			throw new StockInsuficienteException("El stock es insuficiente en el producto");
 		}
+		this.stock= stock- cantidad;
 	}
 	
 	//public double calcularPrecioEnDolar(){}

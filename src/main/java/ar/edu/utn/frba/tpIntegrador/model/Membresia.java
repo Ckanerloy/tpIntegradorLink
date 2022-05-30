@@ -9,9 +9,9 @@ public class Membresia implements Promocion{
 	private Cliente clienteQueCompra;
 	
 	@Override
-	public double aplicar(OrdenDeCompra ordenDeCompra) {
+	public double aplicar(CarritoDeCompra carritoDeCompra) {
 		if(clientes.contains(clienteQueCompra)) {
-			return ordenDeCompra.calcularPrecioTotalSinPromociones() * porcentajeDescuento;
+			return carritoDeCompra.calcularPrecioTotalSinPromociones() * porcentajeDescuento;
 		}else {
 			return 0.0;
 		}

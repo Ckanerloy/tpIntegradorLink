@@ -4,24 +4,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class OrdenDeCompra {
+public class CarritoDeCompra {
 	private Collection<ItemCompra> itemsCompras;
 	private Collection<Promocion> promociones;
 	private LocalDate fechaDeNacimiento;
 	private MedioDePago medioDePago;
-	//Una vez que se termina de hacer la ordenDeCompra en el carrito y se la paga (Aceptandola). Se hace un new a OrdenDeCompra con todos los atributos que tenga el carrito y se agrega el precioTotalConDescuento y precioTotalSinDescuento de los métodos de carrito
-	private double precioTotalSinDescuento;
-	private double precioTotalConDescuento;
 	
-	public OrdenDeCompra(Collection<Promocion> promociones,
-			LocalDate fechaDeNacimiento, MedioDePago medioDePago,double precioTotalSinDescuento ,double precioTotalConDescuento) {
+	public CarritoDeCompra(Collection<Promocion> promociones,
+			LocalDate fechaDeNacimiento, MedioDePago medioDePago) {
 		super();
 		this.itemsCompras = new ArrayList<>();
 		this.promociones = promociones;
 		this.fechaDeNacimiento = fechaDeNacimiento;
 		this.medioDePago = medioDePago;
-		this.precioTotalSinDescuento=precioTotalSinDescuento;
-		this.precioTotalConDescuento=precioTotalConDescuento;
 	}
 	
 	public Collection<ItemCompra> getItemsCompras() {
@@ -56,30 +51,11 @@ public class OrdenDeCompra {
 		this.medioDePago = medioDePago;
 	}
 
-	public double getPrecioTotalSinDescuento() {
-		return precioTotalSinDescuento;
-	}
-
-	public void setPrecioTotalSinDescuento(double precioTotalSinDescuento) {
-		this.precioTotalSinDescuento = precioTotalSinDescuento;
-	}
-
-	public double getPrecioTotalConDescuento() {
-		return precioTotalConDescuento;
-	}
-
-	public void setPrecioTotalConDescuento(double precioTotalConDescuento) {
-		this.precioTotalConDescuento = precioTotalConDescuento;
-	}
-	
-	
-/*
-	public double calcularPrecioTotalSinPromociones() {
+	public double calcularPrecioTotalSinPromociones(){
 		return itemsCompras.stream().mapToDouble(x->x.calcularPrecioItem()).sum();
 	}
 	
-	public double calcularPrecioTotalConPromociones() {
+	public double calcularPrecioTotalConPromociones(){
 		return this.calcularPrecioTotalSinPromociones()-promociones.stream().mapToDouble(x->x.aplicar(this)).sum();
 	}
-*/
 }

@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import ar.edu.utn.frba.tpIntegrador.model.CotizadorPesos;
 import ar.edu.utn.frba.tpIntegrador.model.Producto;
 import ar.edu.utn.frba.tpIntegrador.model.Proveedor;
 

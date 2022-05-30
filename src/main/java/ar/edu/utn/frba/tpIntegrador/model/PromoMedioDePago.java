@@ -11,9 +11,9 @@ public class PromoMedioDePago implements Promocion{
 	}
 
 	@Override
-	public double aplicar(OrdenDeCompra ordenDeCompra) {
-		if(ordenDeCompra.getMedioDePago().equals(this.medioDePago)) {
-			return ordenDeCompra.calcularPrecioTotalSinPromociones() * porcentaje;
+	public double aplicar(CarritoDeCompra carritoDeCompra) {
+		if(carritoDeCompra.getMedioDePago().equals(this.medioDePago)) {
+			return carritoDeCompra.calcularPrecioTotalSinPromociones() * porcentaje;
 		}
 		return 0.0;
 	}
