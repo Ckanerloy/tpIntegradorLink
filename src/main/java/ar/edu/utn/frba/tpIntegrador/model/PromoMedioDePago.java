@@ -1,6 +1,14 @@
 package ar.edu.utn.frba.tpIntegrador.model;
 
-public class PromoMedioDePago implements Promocion{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+@Entity
+public class PromoMedioDePago extends Promocion{
+	@Enumerated(EnumType.STRING)
+	@Column(name = "medioDePago")
 	private MedioDePago medioDePago;
 	private double porcentaje;
 	

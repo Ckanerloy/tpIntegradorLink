@@ -4,15 +4,37 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Cliente extends Usuario{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+@Entity
+public class Cliente extends Rol{
 	private String nombreYApellido;
+	@ManyToOne
 	private CarritoDeCompra carritoDeCompra;
+	@OneToMany
+	@JoinColumn(name = "cliente_id")
 	private Collection<OrdenDeCompra> comprasRealizadas;
 	private LocalDate fechaDeNacimiento;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "tipoDeDocumento")
 	private TipoDeDocumento tipoDeDocumento;
 	private String nroDeDocumento;
 	private String telefono;
 	private String mail;
+	
+	protected Cliente() {
+		super();
+	}
 	
 	public Cliente(String nombreYApellido,CarritoDeCompra carritoDeCompra, Collection<OrdenDeCompra> comprasRealizadas, LocalDate fechaDeNacimiento,
 			TipoDeDocumento tipoDeDocumento, String nroDeDocumento, String telefono, String mail) {

@@ -1,12 +1,24 @@
 package ar.edu.utn.frba.tpIntegrador.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+@Entity
 public class Producto {
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	private double precio;
 	private String descripcion;
 	private String nombre;
+	@Transient
 	private Cotizador cotizador;
 	//private boolean estaDisponible;
 	private int stock;
+	@ManyToOne
 	private Proveedor proveedor;
 	
 	public Producto( String descripcion, String nombre,Cotizador cotizador, boolean estaDisponible, int stock,

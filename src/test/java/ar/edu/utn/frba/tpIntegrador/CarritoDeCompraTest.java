@@ -88,6 +88,6 @@ public class CarritoDeCompraTest {
 		Collection<Promocion> promociones = Arrays.asList(promoMedioDePago);
 		CarritoDeCompra carritoDeCompra = new CarritoDeCompra(promociones,LocalDate.now(), MedioDePago.EFECTIVO);
 		carritoDeCompra.setItemsCompras(itemsCompras);
-		assertEquals(carritoDeCompra.calcularPrecioTotalSinPromociones(),59405);
+		assertEquals(carritoDeCompra.calcularPrecioTotalSinPromociones(),59935);
 	}
 }

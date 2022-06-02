@@ -4,11 +4,35 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+@Entity
 public class CarritoDeCompra {
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	@OneToMany
+	@JoinColumn(name = "carritoDeCompra_id")
 	private Collection<ItemCompra> itemsCompras;
+	@ManyToMany
 	private Collection<Promocion> promociones;
 	private LocalDate fechaDeNacimiento;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "medioDePago")
 	private MedioDePago medioDePago;
+	
+	public CarritoDeCompra() {
+		super();
+	}
 	
 	public CarritoDeCompra(Collection<Promocion> promociones,
 			LocalDate fechaDeNacimiento, MedioDePago medioDePago) {

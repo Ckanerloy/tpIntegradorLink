@@ -1,8 +1,13 @@
 package ar.edu.utn.frba.tpIntegrador.model;
 
-public class CuponProveedor implements Promocion{
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class CuponProveedor extends Promocion{
 	private boolean noEstaUsado;
 	private double descuento;
+	@ManyToOne
 	private Proveedor proveedor;
 	
 	public CuponProveedor(boolean estaUsado, double descuento, Proveedor proveedor) {

@@ -2,12 +2,22 @@ package ar.edu.utn.frba.tpIntegrador.model;
 
 import java.util.Objects;
 
-public class Proveedor extends Usuario{
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Proveedor extends Rol{
 	private String descripcion;
 	private String telefono;
 	private String mail;
 	private int cantidadMinima;
 	//private MedioDeComunicacion medioDeComunicacion;
+	
+	protected Proveedor() {
+		super();
+	}
 	
 	public Proveedor(String descripcion, String telefono, String mail, int cantidadMinima) {
 		//super();

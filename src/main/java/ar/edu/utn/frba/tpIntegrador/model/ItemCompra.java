@@ -1,10 +1,25 @@
 package ar.edu.utn.frba.tpIntegrador.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+@Entity
 public class ItemCompra {
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	@ManyToOne
 	private Producto producto;
 	private int cantidad;
 	private double precioCompra;
-		
+	
+	protected ItemCompra(){
+		super();
+	}
+	
 	public ItemCompra(Producto producto, int cantidad) throws StockInsuficienteException{
 		super();
 		producto.restarStock(cantidad);

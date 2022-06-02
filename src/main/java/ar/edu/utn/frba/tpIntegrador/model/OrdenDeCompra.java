@@ -4,14 +4,38 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+@Entity
 public class OrdenDeCompra {
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	@OneToMany
+	@JoinColumn(name = "ordenDeCompra_id")
 	private Collection<ItemCompra> itemsCompras;
+	@ManyToMany
 	private Collection<Promocion> promociones;
 	private LocalDate fechaDeNacimiento;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "medioDePago")
 	private MedioDePago medioDePago;
 	//Una vez que se termina de hacer la ordenDeCompra en el carrito y se la paga (Aceptandola). Se hace un new a OrdenDeCompra con todos los atributos que tenga el carrito y se agrega el precioTotalConDescuento y precioTotalSinDescuento de los métodos de carrito
 	private double precioTotalSinDescuento;
 	private double precioTotalConDescuento;
+	
+	protected OrdenDeCompra() {
+		super();
+	}
 	
 	public OrdenDeCompra(Collection<Promocion> promociones,
 			LocalDate fechaDeNacimiento, MedioDePago medioDePago,double precioTotalSinDescuento ,double precioTotalConDescuento) {

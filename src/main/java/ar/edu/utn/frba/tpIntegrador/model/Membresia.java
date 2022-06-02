@@ -2,10 +2,17 @@ package ar.edu.utn.frba.tpIntegrador.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 //FALTA TEST
-public class Membresia implements Promocion{
+@Entity
+public class Membresia extends Promocion{
+	@ManyToMany
 	private Collection<Cliente> clientes;
 	private double porcentajeDescuento;
+	@ManyToOne
 	private Cliente clienteQueCompra;
 	
 	@Override

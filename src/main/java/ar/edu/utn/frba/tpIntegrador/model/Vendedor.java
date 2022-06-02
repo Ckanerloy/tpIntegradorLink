@@ -3,15 +3,37 @@ package ar.edu.utn.frba.tpIntegrador.model;
 import java.time.LocalDate;
 import java.util.Collection;
 
-public class Vendedor extends Usuario{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+@Entity
+public class Vendedor extends Rol{
 	private String nombreYApellido;
 	private String legajo;
 	private LocalDate fechaDeNacimiento;
 	private String email;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "tipoDeDocumento")
 	private TipoDeDocumento tipoDeDocumento;
 	private String nroDeDocumento;
+	@OneToMany
+	@JoinColumn(name = "vendedor_id")
 	private Collection<Producto> productosParaVender;
+	@ManyToOne
 	private Proveedor proveedor;
+	
+	protected Vendedor() {
+		super();
+	}
 	
 	public Vendedor(String nombreYApellido, String legajo, LocalDate fechaDeNacimiento, String email,
 			TipoDeDocumento tipoDeDocumento, String nroDeDocumento, Collection<Producto> productosParaVender,
