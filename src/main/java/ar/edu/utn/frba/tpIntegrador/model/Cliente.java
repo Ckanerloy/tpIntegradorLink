@@ -8,13 +8,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 @Entity
 public class Cliente extends Rol{
@@ -36,7 +32,7 @@ public class Cliente extends Rol{
 		super();
 	}
 	
-	public Cliente(String nombreYApellido,CarritoDeCompra carritoDeCompra, Collection<OrdenDeCompra> comprasRealizadas, LocalDate fechaDeNacimiento,
+	public Cliente(String nombreYApellido,CarritoDeCompra carritoDeCompra, LocalDate fechaDeNacimiento,
 			TipoDeDocumento tipoDeDocumento, String nroDeDocumento, String telefono, String mail) {
 		super();
 		this.nombreYApellido = nombreYApellido;
@@ -48,6 +44,7 @@ public class Cliente extends Rol{
 		this.telefono = telefono;
 		this.mail = mail;
 	}
+	
 	public String getNombreYApellido() {
 		return nombreYApellido;
 	}

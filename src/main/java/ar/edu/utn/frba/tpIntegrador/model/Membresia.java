@@ -3,11 +3,13 @@ package ar.edu.utn.frba.tpIntegrador.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 //FALTA TEST
 @Entity
+@DiscriminatorValue("Membresia")
 public class Membresia extends Promocion{
 	@ManyToMany
 	private Collection<Cliente> clientes;
@@ -25,6 +27,10 @@ public class Membresia extends Promocion{
 		
 	}
 
+	protected Membresia() {
+		super();
+	}
+	
 	public Membresia(double porcentajeDescuento) {
 		super();
 		this.clientes = new ArrayList<>();

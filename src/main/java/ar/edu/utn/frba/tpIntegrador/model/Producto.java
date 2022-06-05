@@ -1,5 +1,7 @@
 package ar.edu.utn.frba.tpIntegrador.model;
 
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +22,10 @@ public class Producto {
 	private int stock;
 	@ManyToOne
 	private Proveedor proveedor;
+	
+	protected Producto() {
+		super();
+	}
 	
 	public Producto( String descripcion, String nombre,Cotizador cotizador, boolean estaDisponible, int stock,
 			Proveedor proveedor) {

@@ -74,7 +74,8 @@ public class CarritoDeCompraTest {
 		assertEquals(carritoDeCompra.calcularPrecioTotalConPromociones(),470.0);
 	}
 	
-	@Test void CalcularPrecioDeOrdenDeCompraSinPromocionEnDolares() throws StockInsuficienteException{
+	@Test 
+	public void CalcularPrecioDeOrdenDeCompraSinPromocionEnDolares() throws StockInsuficienteException{
 		Proveedor proveedor1 = new Proveedor("Proveedor de bebidas","48675678","proveedor1@gmail.com",50);
 		CotizadorDolar cotizadorDolar1 = new CotizadorDolar(150.0);
 		Producto producto1= new Producto("Bebida" , "Coca cola",cotizadorDolar1, true, 5,proveedor1);
@@ -88,6 +89,7 @@ public class CarritoDeCompraTest {
 		Collection<Promocion> promociones = Arrays.asList(promoMedioDePago);
 		CarritoDeCompra carritoDeCompra = new CarritoDeCompra(promociones,LocalDate.now(), MedioDePago.EFECTIVO);
 		carritoDeCompra.setItemsCompras(itemsCompras);
-		assertEquals(carritoDeCompra.calcularPrecioTotalSinPromociones(),59935);
+		assertEquals(carritoDeCompra.calcularPrecioTotalSinPromociones(),59975);
 	}
+	
 }
