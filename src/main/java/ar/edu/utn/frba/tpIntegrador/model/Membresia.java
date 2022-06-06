@@ -9,16 +9,16 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 //FALTA TEST
 @Entity
-@DiscriminatorValue("Membresia")
+@DiscriminatorValue("2")
 public class Membresia extends Promocion{
 	@ManyToMany
 	private Collection<Cliente> clientes;
-	private double porcentajeDescuento;
+	private Double porcentajeDescuento;
 	@ManyToOne
 	private Cliente clienteQueCompra;
 	
 	@Override
-	public double aplicar(CarritoDeCompra carritoDeCompra) {
+	public Double aplicar(CarritoDeCompra carritoDeCompra) {
 		if(clientes.contains(clienteQueCompra)) {
 			return carritoDeCompra.calcularPrecioTotalSinPromociones() * porcentajeDescuento;
 		}else {
@@ -37,20 +37,28 @@ public class Membresia extends Promocion{
 		this.porcentajeDescuento = porcentajeDescuento;
 	}
 
-	public Collection<Cliente> getCliente() {
+	public Collection<Cliente> getClientes() {
 		return clientes;
 	}
 
-	public void setCliente(Collection<Cliente> clientes) {
+	public void setClientes(Collection<Cliente> clientes) {
 		this.clientes = clientes;
 	}
 
-	public double getPorcentajeDescuento() {
+	public Double getPorcentajeDescuento() {
 		return porcentajeDescuento;
 	}
 
 	public void setPorcentajeDescuento(double porcentajeDescuento) {
 		this.porcentajeDescuento = porcentajeDescuento;
 	}
-	
+
+	public Cliente getClienteQueCompra() {
+		return clienteQueCompra;
+	}
+
+	public void setClienteQueCompra(Cliente clienteQueCompra) {
+		this.clienteQueCompra = clienteQueCompra;
+	}
+
 }

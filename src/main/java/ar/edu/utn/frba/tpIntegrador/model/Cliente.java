@@ -8,11 +8,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
+@PrimaryKeyJoinColumn(referencedColumnName="id")
 public class Cliente extends Rol{
 	private String nombreYApellido;
 	@ManyToOne
@@ -34,6 +39,19 @@ public class Cliente extends Rol{
 	
 	public Cliente(String nombreYApellido,CarritoDeCompra carritoDeCompra, LocalDate fechaDeNacimiento,
 			TipoDeDocumento tipoDeDocumento, String nroDeDocumento, String telefono, String mail) {
+		super();
+		this.nombreYApellido = nombreYApellido;
+		this.carritoDeCompra=carritoDeCompra;
+		this.comprasRealizadas = new ArrayList<>();
+		this.fechaDeNacimiento = fechaDeNacimiento;
+		this.tipoDeDocumento = tipoDeDocumento;
+		this.nroDeDocumento = nroDeDocumento;
+		this.telefono = telefono;
+		this.mail = mail;
+	}
+	
+	public Cliente(LocalDate fechaDeNacimiento, String mail, String nombreYApellido,String nroDeDocumento, 
+			String telefono, TipoDeDocumento tipoDeDocumento, CarritoDeCompra carritoDeCompra) {
 		super();
 		this.nombreYApellido = nombreYApellido;
 		this.carritoDeCompra=carritoDeCompra;

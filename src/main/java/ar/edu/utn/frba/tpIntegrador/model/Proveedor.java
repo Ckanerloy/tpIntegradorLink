@@ -3,27 +3,30 @@ package ar.edu.utn.frba.tpIntegrador.model;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
+@PrimaryKeyJoinColumn(referencedColumnName="id")
 public class Proveedor extends Rol{
 	private String descripcion;
 	private String telefono;
 	private String mail;
-	private int cantidadMinima;
+	private Integer cantidadMinima;
 	//private MedioDeComunicacion medioDeComunicacion;
 	
 	protected Proveedor() {
 		super();
 	}
 	
-	public Proveedor(String descripcion, String telefono, String mail, int cantidadMinima) {
-		//super();
+	
+	public Proveedor(String descripcion, String telefono, String mail, Integer cantidadMinima) {
+		super();
 		this.descripcion = descripcion;
 		this.telefono = telefono;
 		this.mail = mail;
 		this.cantidadMinima = cantidadMinima;
 	}
-	
+
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -48,7 +51,7 @@ public class Proveedor extends Rol{
 		this.mail = mail;
 	}
 
-	public int getCantidadMinima() {
+	public Integer getCantidadMinima() {
 		return cantidadMinima;
 	}
 

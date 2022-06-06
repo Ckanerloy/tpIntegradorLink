@@ -1,7 +1,5 @@
 package ar.edu.utn.frba.tpIntegrador.model;
 
-import java.util.ArrayList;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,53 +7,55 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
+import ar.edu.utn.frba.tpIntegrador.CotizadorDolar;
+
 @Entity
 public class Producto {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private double precio;
+	private Double precio;
 	private String descripcion;
 	private String nombre;
-	@Transient
-	private Cotizador cotizador;
+	@ManyToOne
+	private CotizadorDolar cotizadorDolar;
 	//private boolean estaDisponible;
 	private int stock;
 	@ManyToOne
 	private Proveedor proveedor;
+	private Boolean estaEnDolares;
 	
 	protected Producto() {
 		super();
 	}
 	
-	public Producto( String descripcion, String nombre,Cotizador cotizador, boolean estaDisponible, int stock,
-			Proveedor proveedor) {
+	public Producto( String descripcion,String nombre,Double precio, int stock,
+			Proveedor proveedor,Boolean estaEnDolares) {
 		super();
 		this.descripcion = descripcion;
 		this.nombre = nombre;
-		this.cotizador = cotizador;
-		this.precio= cotizador.calcularPrecio();
+		this.precio= precio;
 		//this.estaDisponible = estaDisponible;
 		this.stock = stock;
 		this.proveedor = proveedor;
+		this.cotizadorDolar=cotizadorDolar;
+		this.estaEnDolares=estaEnDolares;
 	}
-	
-	public Producto( String descripcion, String nombre,Cotizador cotizador, boolean estaDisponible, int stock) {
-		super();
-		this.descripcion = descripcion;
-		this.nombre = nombre;
-		this.cotizador = cotizador;
-		this.precio= cotizador.calcularPrecio();
-		//this.estaDisponible = estaDisponible;
-		this.stock = stock;
+/*	
+	public Double getPrecioCompra() {
+		return cotizador.calcularPrecio(this.precio);
 	}
-	
-	public Producto(String descripcion, String nombre ) {
-		super();
-		this.descripcion = descripcion;
-		this.nombre = nombre;
+*/	
+	public Double getPrecio() {
+		if(this.getEstaEnDolares()) {
+			return cotizadorDolar.getPrecioDolar() * this.precio;
+		}else {
+			return this.precio;
+		}
+		
 	}
-	public double getPrecio() {
-		return cotizador.calcularPrecio();
+
+	public void setPrecio(Double precio) {
+		this.precio = precio;
 	}
 
 	public String getDescripcion() {
@@ -74,14 +74,14 @@ public class Producto {
 		this.nombre = nombre;
 	}
 
-/*	public boolean isEstaDisponible() {
-		return estaDisponible;
+	public CotizadorDolar getCotizadorDolar() {
+		return cotizadorDolar;
 	}
 
-	public void setEstaDisponible(boolean estaDisponible) {
-		this.estaDisponible = estaDisponible;
+	public void setCotizadorDolar(CotizadorDolar cotizadorDolar) {
+		this.cotizadorDolar = cotizadorDolar;
 	}
-*/
+
 	public int getStock() {
 		return stock;
 	}
@@ -98,6 +98,15 @@ public class Producto {
 		this.proveedor = proveedor;
 	}
 
+	public Boolean getEstaEnDolares() {
+		return estaEnDolares;
+	}
+
+	public void setEstaEnDolares(Boolean estaEnDolares) {
+		this.estaEnDolares = estaEnDolares;
+	}
+	
+	
 	//Funciones
 
 	public void restarStock(int cantidad) throws StockInsuficienteException{

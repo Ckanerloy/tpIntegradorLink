@@ -1,17 +1,18 @@
 package ar.edu.utn.frba.tpIntegrador.model;
 
-public class CotizadorPesos implements Cotizador{
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+//@Entity
+///@DiscriminatorValue("1")
+public class CotizadorPesos{
 	
-	private double precio;
-	
-	@Override
-	public double calcularPrecio(){
+	public Double calcularPrecio(Double precio){
 		return precio * 1;
 	}
 
-	public CotizadorPesos(double precio) {
+	public CotizadorPesos() {
 		super();
-		this.precio = precio;
 	}
 	
 }

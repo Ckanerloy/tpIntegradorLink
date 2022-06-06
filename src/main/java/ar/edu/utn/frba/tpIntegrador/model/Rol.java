@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-@Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Entity
 public class Rol {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
