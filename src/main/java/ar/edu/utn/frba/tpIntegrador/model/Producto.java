@@ -16,8 +16,8 @@ public class Producto {
 	private Double precio;
 	private String descripcion;
 	private String nombre;
-	@ManyToOne
-	private CotizadorDolar cotizadorDolar;
+	//@ManyToOne
+	//private CotizadorDolar cotizadorDolar;
 	//private boolean estaDisponible;
 	private int stock;
 	@ManyToOne
@@ -37,7 +37,6 @@ public class Producto {
 		//this.estaDisponible = estaDisponible;
 		this.stock = stock;
 		this.proveedor = proveedor;
-		this.cotizadorDolar=cotizadorDolar;
 		this.estaEnDolares=estaEnDolares;
 	}
 /*	
@@ -47,6 +46,7 @@ public class Producto {
 */	
 	public Double getPrecio() {
 		if(this.getEstaEnDolares()) {
+			CotizadorDolar cotizadorDolar = CotizadorDolar.getConfigurador();
 			return cotizadorDolar.getPrecioDolar() * this.precio;
 		}else {
 			return this.precio;
@@ -73,7 +73,7 @@ public class Producto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+/*
 	public CotizadorDolar getCotizadorDolar() {
 		return cotizadorDolar;
 	}
@@ -81,7 +81,7 @@ public class Producto {
 	public void setCotizadorDolar(CotizadorDolar cotizadorDolar) {
 		this.cotizadorDolar = cotizadorDolar;
 	}
-
+*/
 	public int getStock() {
 		return stock;
 	}

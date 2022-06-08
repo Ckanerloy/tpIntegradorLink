@@ -14,12 +14,8 @@ import org.springframework.web.client.RestTemplate;
 import ar.edu.utn.frba.tpIntegrador.model.ApiPrecioDolar;
 import ar.edu.utn.frba.tpIntegrador.model.Cotizador;
 
-@Entity
 @Component
-public final class CotizadorDolar extends Cotizador{
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	@Transient
+public final class CotizadorDolar{
 	RestTemplate restTemplate = new RestTemplate();
 	private Double precioDolar;
 	private static CotizadorDolar cotizadorDolar;

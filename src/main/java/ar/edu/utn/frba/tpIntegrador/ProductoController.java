@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import ar.edu.utn.frba.tpIntegrador.model.Producto;
 
-@RepositoryRestController
+//@RepositoryRestController
 public class ProductoController {
-	@Autowired
+/*	@Autowired
 	RepoProducto repoProducto;
 	@Autowired
 	RepoCotizador repoCotizador;
@@ -33,5 +33,5 @@ public class ProductoController {
 			producto.setCotizadorDolar(cotizadorDolar);
 		}
 		return "ok";
-	}
+	}*/
 }

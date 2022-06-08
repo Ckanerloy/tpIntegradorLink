@@ -12,9 +12,9 @@ public class CotizadorDolarTest {
 	public void precioDolar() {
 		Proveedor proveedor = new Proveedor("Proveedor de bebidas","48675678","proveedor@gmail.com",50);
 		Producto producto1= new Producto("Bebida" , "Coca cola",2.0, 5,proveedor,true);
-		CotizadorDolar cotizadorDolar = new CotizadorDolar();	
-		producto1.setCotizadorDolar(cotizadorDolar);
-		assertEquals(producto1.getPrecio(),239.90);
+		//CotizadorDolar cotizadorDolar = new CotizadorDolar();	
+		//producto1.setCotizadorDolar(cotizadorDolar);
+		assertEquals(producto1.getPrecio(),241.30);
 	}
 
 	

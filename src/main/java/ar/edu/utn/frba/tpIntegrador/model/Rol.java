@@ -9,7 +9,7 @@ import javax.persistence.InheritanceType;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
-public class Rol {
+public abstract class Rol {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 }

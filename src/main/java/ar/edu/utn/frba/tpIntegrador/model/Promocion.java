@@ -12,10 +12,8 @@ import javax.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo",discriminatorType = DiscriminatorType.INTEGER)
-public class Promocion {
+public abstract class Promocion {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	public Double aplicar(CarritoDeCompra CarritoDeCompra) {
-		return 0.0;
-	};
+	public abstract Double aplicar(CarritoDeCompra CarritoDeCompra);
 }

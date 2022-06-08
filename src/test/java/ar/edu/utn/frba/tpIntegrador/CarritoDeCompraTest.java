@@ -80,20 +80,20 @@ public class CarritoDeCompraTest {
 	public void CalcularPrecioDeOrdenDeCompraSinPromocionEnDolares() throws StockInsuficienteException{
 		Proveedor proveedor1 = new Proveedor("Proveedor de bebidas","48675678","proveedor1@gmail.com",50);
 		Producto producto1= new Producto("Bebida" , "Coca cola", 150.0, 5,proveedor1,true);
-		CotizadorDolar cotizadorDolar1 = new CotizadorDolar();
-		producto1.setCotizadorDolar(cotizadorDolar1);
+		//CotizadorDolar cotizadorDolar1 = new CotizadorDolar();
+		//producto1.setCotizadorDolar(cotizadorDolar1);
 		ItemCompra itemDeCompra1 = new ItemCompra(producto1,2); 
 		Proveedor proveedor2 = new Proveedor("Proveedor de Snacks","48585110","proveedor2@gmail.com",100);
 		//CotizadorDolar cotizadorDolar2 = new CotizadorDolar();
 		Producto producto2= new Producto("Snacks" , "chetos", 50.0, 5,proveedor2,true);
-		producto2.setCotizadorDolar(cotizadorDolar1);
+		//producto2.setCotizadorDolar(cotizadorDolar1);
 		ItemCompra itemDeCompra2 = new ItemCompra(producto2,4); 
 		Collection<ItemCompra> itemsCompras = Arrays.asList(itemDeCompra1,itemDeCompra2);
 		PromoMedioDePago promoMedioDePago = new PromoMedioDePago(MedioDePago.EFECTIVO,0.10);
 		Collection<Promocion> promociones = Arrays.asList(promoMedioDePago);
 		CarritoDeCompra carritoDeCompra = new CarritoDeCompra(promociones,LocalDate.now(), MedioDePago.EFECTIVO);
 		carritoDeCompra.setItemsCompras(itemsCompras);
-		assertEquals(carritoDeCompra.calcularPrecioTotalSinPromociones(),59975);
+		assertEquals(carritoDeCompra.calcularPrecioTotalSinPromociones(),60325);
 	}
 	
 }
