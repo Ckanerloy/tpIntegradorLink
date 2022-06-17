@@ -1,18 +1,10 @@
 package ar.edu.utn.frba.tpIntegrador;
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Transient;
-
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import ar.edu.utn.frba.tpIntegrador.model.ApiPrecioDolar;
-import ar.edu.utn.frba.tpIntegrador.model.Cotizador;
 
 @Component
 public final class CotizadorDolar{

@@ -32,7 +32,7 @@ public class OrdenDeCompra {
 	private double precioTotalSinDescuento;
 	private double precioTotalConDescuento;
 	
-	protected OrdenDeCompra() {
+	public OrdenDeCompra() {
 		super();
 	}
 	

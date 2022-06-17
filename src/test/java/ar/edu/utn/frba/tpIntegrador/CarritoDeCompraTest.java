@@ -9,7 +9,6 @@ import java.util.Collection;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.utn.frba.tpIntegrador.model.CarritoDeCompra;
-import ar.edu.utn.frba.tpIntegrador.model.CotizadorPesos;
 import ar.edu.utn.frba.tpIntegrador.model.CuponProveedor;
 import ar.edu.utn.frba.tpIntegrador.model.ItemCompra;
 import ar.edu.utn.frba.tpIntegrador.model.MedioDePago;

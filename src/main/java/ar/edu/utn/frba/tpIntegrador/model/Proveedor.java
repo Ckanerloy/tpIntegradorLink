@@ -3,11 +3,15 @@ package ar.edu.utn.frba.tpIntegrador.model;
 import java.util.Objects;
 
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@PrimaryKeyJoinColumn(referencedColumnName="id")
-public class Proveedor extends Rol{
+//@PrimaryKeyJoinColumn(referencedColumnName="id")
+public class Proveedor{
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	private String descripcion;
 	private String telefono;
 	private String mail;
@@ -58,6 +62,20 @@ public class Proveedor extends Rol{
 	public void setCantidadMinima(int cantidadMinima) {
 		this.cantidadMinima = cantidadMinima;
 	}
+	
+	public void setCantidadMinima(Integer cantidadMinima) {
+		this.cantidadMinima = cantidadMinima;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 
 	@Override
 	public int hashCode() {

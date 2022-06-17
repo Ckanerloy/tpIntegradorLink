@@ -1,7 +1,5 @@
 package ar.edu.utn.frba.tpIntegrador.model;
 
-import java.util.ArrayList;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;

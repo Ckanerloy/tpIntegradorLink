@@ -1,7 +1,5 @@
 package ar.edu.utn.frba.tpIntegrador.model;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
 
 //@Entity
 ///@DiscriminatorValue("1")

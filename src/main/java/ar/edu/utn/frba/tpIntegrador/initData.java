@@ -1,5 +1,5 @@
 package ar.edu.utn.frba.tpIntegrador;
-
+/*
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,7 +14,7 @@ import ar.edu.utn.frba.tpIntegrador.model.ItemCompra;
 import ar.edu.utn.frba.tpIntegrador.model.Producto;
 import ar.edu.utn.frba.tpIntegrador.model.Rol;
 import ar.edu.utn.frba.tpIntegrador.model.TipoDeDocumento;
-/*
+
 public class initData implements CommandLineRunner{
 	@Autowired
 	RepoUsuario repousuario; 

@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 import ar.edu.utn.frba.tpIntegrador.CotizadorDolar;
 
@@ -24,7 +23,7 @@ public class Producto {
 	private Proveedor proveedor;
 	private Boolean estaEnDolares;
 	
-	protected Producto() {
+	public Producto() {
 		super();
 	}
 	

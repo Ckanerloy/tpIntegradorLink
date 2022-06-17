@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import ar.edu.utn.frba.tpIntegrador.model.CotizadorPesos;
 import ar.edu.utn.frba.tpIntegrador.model.ItemCompra;
 import ar.edu.utn.frba.tpIntegrador.model.Producto;
 import ar.edu.utn.frba.tpIntegrador.model.Proveedor;

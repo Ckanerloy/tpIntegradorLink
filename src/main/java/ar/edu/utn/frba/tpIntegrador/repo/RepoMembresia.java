@@ -3,9 +3,9 @@ package ar.edu.utn.frba.tpIntegrador.repo;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import ar.edu.utn.frba.tpIntegrador.model.ItemCompra;
+import ar.edu.utn.frba.tpIntegrador.model.Membresia;
 
-@RepositoryRestResource(path="itemsDeCompras")
-public interface RepoItemCompra extends PagingAndSortingRepository<ItemCompra, Integer> {
+@RepositoryRestResource(path="membresias")
+public interface RepoMembresia extends PagingAndSortingRepository<Membresia, Integer> {
 
 }
