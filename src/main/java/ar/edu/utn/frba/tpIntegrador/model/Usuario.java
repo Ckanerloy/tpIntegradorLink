@@ -14,4 +14,40 @@ public class Usuario{
 	private String contra;
 	@OneToOne
 	private Rol rol;
+	
+	public Usuario( String user, String contra, Rol rol) {
+		super();
+		this.user = user;
+		this.contra = contra;
+		this.rol = rol;
+	}
+	
+	public Usuario() {
+		super();
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
+	}
+	public String getContra() {
+		return contra;
+	}
+	public void setContra(String contra) {
+		this.contra = contra;
+	}
+	public Rol getRol() {
+		return rol;
+	}
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
 }
