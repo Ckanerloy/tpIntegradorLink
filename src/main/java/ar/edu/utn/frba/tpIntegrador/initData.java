@@ -1,5 +1,5 @@
 package ar.edu.utn.frba.tpIntegrador;
-/*
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.stereotype.Component;
 
 import ar.edu.utn.frba.tpIntegrador.model.CarritoDeCompra;
 import ar.edu.utn.frba.tpIntegrador.model.Cliente;
@@ -15,8 +16,20 @@ import ar.edu.utn.frba.tpIntegrador.model.Producto;
 import ar.edu.utn.frba.tpIntegrador.model.Rol;
 import ar.edu.utn.frba.tpIntegrador.model.TipoDeDocumento;
 
+@Component
 public class initData implements CommandLineRunner{
 	@Autowired
+	RepositoryRestConfiguration config;
+
+	@Override
+	public void run(String... args) throws Exception {
+	config.exposeIdsFor(Producto.class);
+
+	}
+
+}
+	
+	/*@Autowired
 	RepoUsuario repousuario; 
 	@Autowired
 	RepoRol repoRol;

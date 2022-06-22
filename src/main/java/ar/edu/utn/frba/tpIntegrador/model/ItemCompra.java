@@ -40,7 +40,7 @@ public class ItemCompra {
 		this.cantidad = cantidad;
 	}
 	public double getPrecioCompra() {
-		return precioCompra;
+		return producto.getPrecio();
 	}
 	public void setPrecioCompra(double precioCompra) {
 		this.precioCompra = precioCompra;

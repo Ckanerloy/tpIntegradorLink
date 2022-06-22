@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Transient;
 
 @Entity
 @PrimaryKeyJoinColumn(referencedColumnName="id")
@@ -29,6 +30,8 @@ public class Cliente extends Rol{
 	private String nroDeDocumento;
 	private String telefono;
 	private String mail;
+	@Transient
+	private String tipoDeRol="cliente"; 
 	
 	protected Cliente() {
 		super();
@@ -109,6 +112,14 @@ public class Cliente extends Rol{
 		this.mail = mail;
 	}
 	
+	public String getTipoDeRol() {
+		return tipoDeRol;
+	}
+
+	public void setTipoDeRol(String tipoDeRol) {
+		this.tipoDeRol = tipoDeRol;
+	}
+
 	// Funciones
 	public void realizarComprar(OrdenDeCompra ordenDeCompra) {
 		comprasRealizadas.add(ordenDeCompra);

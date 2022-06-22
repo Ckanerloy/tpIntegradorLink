@@ -1,5 +1,6 @@
 package ar.edu.utn.frba.tpIntegrador.controller;
 import java.util.Optional;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
@@ -30,7 +31,7 @@ public class VendedorController {
 	
 	@Transactional
 	@RequestMapping(method = RequestMethod.POST,value="/vendedores/{vendedorID}/productos")
-	public @ResponseBody String registrarrProducto(@PathVariable("vendedorID") Integer vendedorID,
+	public @ResponseBody String registrarrProducto(@PathVariable("vendedorID") UUID vendedorID,
 													@RequestBody ProductoDTO productoDto) {
 		
 		Optional<Vendedor> opcionalVendedor = repoVendedor.findById(vendedorID);

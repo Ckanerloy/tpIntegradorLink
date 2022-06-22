@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Transient;
 
 @Entity
 @PrimaryKeyJoinColumn(referencedColumnName="id")
@@ -28,6 +29,7 @@ public class Vendedor extends Rol{
 	private Collection<Producto> productosParaVender;
 	@ManyToOne
 	private Proveedor proveedor;
+	private String tipoDeRol = "vendedor"; 
 	
 	protected Vendedor() {
 		super();
@@ -110,6 +112,14 @@ public class Vendedor extends Rol{
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
 	} 
+	
+	public String getTipoDeRol() {
+		return tipoDeRol;
+	}
+
+	public void setTipoDeRol(String tipoDeRol) {
+		this.tipoDeRol = tipoDeRol;
+	}
 
 	public void agregarProducto(Producto producto) {
 		this.productosParaVender.add(producto);

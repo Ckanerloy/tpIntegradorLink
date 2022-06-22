@@ -53,6 +53,14 @@ public class Producto {
 		
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}

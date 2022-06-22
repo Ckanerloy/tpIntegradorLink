@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Usuario{
 	@Id
@@ -18,7 +20,9 @@ public class Usuario{
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", updatable = false, nullable = false, unique=true, columnDefinition = "BINARY(16)")
     private UUID id;
+	//@JsonIgnore
 	private String user;
+	//@JsonIgnore
 	private String contra;
 	@OneToOne
 	private Rol rol;
