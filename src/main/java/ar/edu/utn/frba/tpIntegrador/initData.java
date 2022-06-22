@@ -23,7 +23,7 @@ public class initData implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-	config.exposeIdsFor(Producto.class);
+	config.exposeIdsFor(Producto.class,CarritoDeCompra.class);
 
 	}
 

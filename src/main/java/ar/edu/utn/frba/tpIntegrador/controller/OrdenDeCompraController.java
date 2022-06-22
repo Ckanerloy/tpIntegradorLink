@@ -22,7 +22,7 @@ import ar.edu.utn.frba.tpIntegrador.repo.RepoOrdenDeCompra;
 
 @RepositoryRestController
 public class OrdenDeCompraController {
-	@Autowired
+	/*@Autowired
 	RepoItemCompra repoItemCompra;
 	@Autowired
 	RepoCliente repoCliente;
@@ -58,8 +58,8 @@ public class OrdenDeCompraController {
 		if(opcionalCotizador.isEmpty()) {
 			return "alumno no encontrado";
 		}
-		*/
+		
 
 		return "ok";
-	}
+	}*/
 }

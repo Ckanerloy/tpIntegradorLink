@@ -18,8 +18,8 @@ import javax.persistence.Transient;
 @PrimaryKeyJoinColumn(referencedColumnName="id")
 public class Cliente extends Rol{
 	private String nombreYApellido;
-	@ManyToOne
-	private CarritoDeCompra carritoDeCompra;
+	//@ManyToOne
+	//private CarritoDeCompra carritoDeCompra;
 	@OneToMany
 	@JoinColumn(name = "cliente_id")
 	private Collection<OrdenDeCompra> comprasRealizadas;
@@ -37,11 +37,10 @@ public class Cliente extends Rol{
 		super();
 	}
 	
-	public Cliente(String nombreYApellido,CarritoDeCompra carritoDeCompra, LocalDate fechaDeNacimiento,
+	public Cliente(String nombreYApellido, LocalDate fechaDeNacimiento,
 			TipoDeDocumento tipoDeDocumento, String nroDeDocumento, String telefono, String mail) {
 		super();
 		this.nombreYApellido = nombreYApellido;
-		this.carritoDeCompra=carritoDeCompra;
 		this.comprasRealizadas = new ArrayList<>();
 		this.fechaDeNacimiento = fechaDeNacimiento;
 		this.tipoDeDocumento = tipoDeDocumento;
@@ -51,10 +50,9 @@ public class Cliente extends Rol{
 	}
 	
 	public Cliente(LocalDate fechaDeNacimiento, String mail, String nombreYApellido,String nroDeDocumento, 
-			String telefono, TipoDeDocumento tipoDeDocumento, CarritoDeCompra carritoDeCompra) {
+			String telefono, TipoDeDocumento tipoDeDocumento) {
 		super();
 		this.nombreYApellido = nombreYApellido;
-		this.carritoDeCompra=carritoDeCompra;
 		this.comprasRealizadas = new ArrayList<>();
 		this.fechaDeNacimiento = fechaDeNacimiento;
 		this.tipoDeDocumento = tipoDeDocumento;
@@ -69,12 +67,7 @@ public class Cliente extends Rol{
 	public void setNombreYApellido(String nombreYApellido) {
 		this.nombreYApellido = nombreYApellido;
 	}
-	public CarritoDeCompra getCarritoDeCompra() {
-		return carritoDeCompra;
-	}
-	public void setCarritoDeCompra(CarritoDeCompra carritoDeCompra) {
-		this.carritoDeCompra = carritoDeCompra;
-	}
+	
 	public Collection<OrdenDeCompra> getComprasRealizadas() {
 		return comprasRealizadas;
 	}
@@ -124,4 +117,6 @@ public class Cliente extends Rol{
 	public void realizarComprar(OrdenDeCompra ordenDeCompra) {
 		comprasRealizadas.add(ordenDeCompra);
 	}
+	
+	
 }

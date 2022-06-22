@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import ar.edu.utn.frba.tpIntegrador.DTO.LoginDTO;
-import ar.edu.utn.frba.tpIntegrador.model.Rol;
 import ar.edu.utn.frba.tpIntegrador.model.Usuario;
 import ar.edu.utn.frba.tpIntegrador.repo.RepoUsuario;
 

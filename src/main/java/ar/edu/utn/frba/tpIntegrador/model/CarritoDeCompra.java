@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class CarritoDeCompra {
@@ -28,18 +29,21 @@ public class CarritoDeCompra {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "medioDePago")
 	private MedioDePago medioDePago;
+	@OneToOne
+	private Cliente cliente;
 	
 	public CarritoDeCompra() {
 		super();
 	}
 	
 	public CarritoDeCompra(Collection<Promocion> promociones,
-			LocalDate fechaDeCompra, MedioDePago medioDePago) {
+			LocalDate fechaDeCompra, MedioDePago medioDePago,Cliente cliente) {
 		super();
 		this.itemsCompras = new ArrayList<>();
 		this.promociones = promociones;
 		this.fechaDeCompra = fechaDeCompra;
 		this.medioDePago = medioDePago;
+		this.cliente=cliente;
 	}
 	
 	public Collection<ItemCompra> getItemsCompras() {
@@ -72,6 +76,22 @@ public class CarritoDeCompra {
 
 	public void setMedioDePago(MedioDePago medioDePago) {
 		this.medioDePago = medioDePago;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public double calcularPrecioTotalSinPromociones(){

@@ -14,12 +14,10 @@ public class Membresia extends Promocion{
 	@ManyToMany
 	private Collection<Cliente> clientes;
 	private Double porcentajeDescuento;
-	@ManyToOne
-	private Cliente clienteQueCompra;
 	
 	@Override
 	public Double aplicar(CarritoDeCompra carritoDeCompra) {
-		if(clientes.contains(clienteQueCompra)) {
+		if(clientes.contains(carritoDeCompra.getCliente())) {
 			return carritoDeCompra.calcularPrecioTotalSinPromociones() * porcentajeDescuento;
 		}else {
 			return 0.0;
@@ -31,9 +29,9 @@ public class Membresia extends Promocion{
 		super();
 	}
 	
-	public Membresia(double porcentajeDescuento) {
+	public Membresia(Collection<Cliente> clientes,double porcentajeDescuento) {
 		super();
-		this.clientes = new ArrayList<>();
+		this.clientes = clientes;
 		this.porcentajeDescuento = porcentajeDescuento;
 	}
 
@@ -51,14 +49,6 @@ public class Membresia extends Promocion{
 
 	public void setPorcentajeDescuento(double porcentajeDescuento) {
 		this.porcentajeDescuento = porcentajeDescuento;
-	}
-
-	public Cliente getClienteQueCompra() {
-		return clienteQueCompra;
-	}
-
-	public void setClienteQueCompra(Cliente clienteQueCompra) {
-		this.clienteQueCompra = clienteQueCompra;
 	}
 
 }
