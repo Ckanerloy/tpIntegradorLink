@@ -17,6 +17,7 @@ import ar.edu.utn.frba.tpIntegrador.DTO.CarritoDeCompraDTO;
 import ar.edu.utn.frba.tpIntegrador.model.CarritoDeCompra;
 import ar.edu.utn.frba.tpIntegrador.model.Cliente;
 import ar.edu.utn.frba.tpIntegrador.model.ItemCompra;
+import ar.edu.utn.frba.tpIntegrador.model.MedioDePago;
 import ar.edu.utn.frba.tpIntegrador.model.Producto;
 import ar.edu.utn.frba.tpIntegrador.model.StockInsuficienteException;
 import ar.edu.utn.frba.tpIntegrador.repo.RepoCarritoDeCompra;
@@ -85,4 +86,30 @@ public class CarritoControllerComplement {
 		repoItemCompra.save(itemCompra);
 	}
 	
+	@Transactional
+	@GetMapping("/{clienteID}/cuponProveedor/{cuponProveedorID}")
+	public void get(@PathVariable("clienteID") UUID clienteID,@PathVariable("cuponProveedorID") Integer cuponProveedorID) {
+		
+	}
+	
+	@Transactional
+	@PostMapping("/{clienteID}/medioDePago/{metodoDePago}")
+	public void get(@PathVariable("clienteID") UUID clienteID, @PathVariable("metodoDePago") String metodoDePago) {
+		Optional<Cliente> opcionalCliente= repoCliente.findById(clienteID);
+		Cliente cliente= opcionalCliente.get();
+		
+		Optional<CarritoDeCompra> opcionalCarritoDeCompra= repoCarritoDeCompra.findByCliente(cliente);
+		CarritoDeCompra carritoDeCompra=opcionalCarritoDeCompra.get();
+		
+		if(metodoDePago.equals("EFECTIVO")) {
+			carritoDeCompra.setMedioDePago(MedioDePago.EFECTIVO);
+		}else {
+			if(metodoDePago.equals("TARJETA_CREDITO")) {
+				carritoDeCompra.setMedioDePago(MedioDePago.TARJETA_CREDITO);
+			}
+			else {
+				carritoDeCompra.setMedioDePago(MedioDePago.TARJETA_DEBITO);
+			}
+		}
+	}
 }
