@@ -22,13 +22,14 @@ public class Producto {
 	@ManyToOne
 	private Proveedor proveedor;
 	private Boolean estaEnDolares;
+	private String imagen;
 	
 	public Producto() {
 		super();
 	}
 	
 	public Producto( String descripcion,String nombre,Double precio, int stock,
-			Proveedor proveedor,Boolean estaEnDolares) {
+			Proveedor proveedor,Boolean estaEnDolares,String imagen) {
 		super();
 		this.descripcion = descripcion;
 		this.nombre = nombre;
@@ -37,6 +38,7 @@ public class Producto {
 		this.stock = stock;
 		this.proveedor = proveedor;
 		this.estaEnDolares=estaEnDolares;
+		this.imagen=imagen;
 	}
 /*	
 	public Double getPrecioCompra() {
@@ -113,6 +115,13 @@ public class Producto {
 		this.estaEnDolares = estaEnDolares;
 	}
 	
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
 	
 	//Funciones
 

@@ -6,11 +6,13 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import ar.edu.utn.frba.tpIntegrador.DTO.ProductoDTO;
 import ar.edu.utn.frba.tpIntegrador.model.Producto;
@@ -20,7 +22,9 @@ import ar.edu.utn.frba.tpIntegrador.repo.RepoProducto;
 import ar.edu.utn.frba.tpIntegrador.repo.RepoProveedor;
 import ar.edu.utn.frba.tpIntegrador.repo.RepoVendedor;
 
-@RepositoryRestController
+@CrossOrigin
+@RestController
+@RequestMapping("")
 public class VendedorController {
 	@Autowired
 	RepoProducto repoProducto;
@@ -30,21 +34,17 @@ public class VendedorController {
 	RepoVendedor repoVendedor;
 	
 	@Transactional
-	@RequestMapping(method = RequestMethod.POST,value="/vendedores/{vendedorID}/productos")
-	public @ResponseBody String registrarrProducto(@PathVariable("vendedorID") UUID vendedorID,
+	@RequestMapping(method = RequestMethod.POST,value="/vendedor/{vendedorID}/productos")
+	public @ResponseBody void registrarrProducto(@PathVariable("vendedorID") UUID vendedorID,
 													@RequestBody ProductoDTO productoDto) {
 		
 		Optional<Vendedor> opcionalVendedor = repoVendedor.findById(vendedorID);
-		if(opcionalVendedor.isEmpty()) {
-			return "vendedor no encontrado";
-		}
+		
 		
 		Vendedor vendedor = opcionalVendedor.get();
 		
 		Optional<Proveedor> opcionalProveedor = repoProveedor.findById(productoDto.getProveedorID());
-		if(opcionalProveedor.isEmpty()) {
-			return "proveedor no encontrado";
-		}
+		
 		Proveedor proveedor = opcionalProveedor.get();
 		
 		Producto producto=new Producto();
@@ -54,6 +54,7 @@ public class VendedorController {
 		producto.setStock(productoDto.getStock());
 		producto.setEstaEnDolares(productoDto.getEstaEnDolares());
 		producto.setProveedor(proveedor);
+		producto.setImagen(productoDto.getImagen());
 		
 		vendedor.agregarProducto(producto);
 		
@@ -66,6 +67,6 @@ public class VendedorController {
 		}
 		*/
 
-		return "ok";
+		
 	}
 }

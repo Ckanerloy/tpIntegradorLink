@@ -14,7 +14,7 @@ public class ItemCompraTest {
 	@Test
 	public void calcularElTotalDeUnItem() throws StockInsuficienteException{
 		Proveedor proveedor = new Proveedor("Proveedor de bebidas","48675678","proveedor@gmail.com",50);
-		Producto producto1= new Producto("Bebida" , "Coca cola", 100.0, 5,proveedor,false);
+		Producto producto1= new Producto("Bebida" , "Coca cola", 100.0, 5,proveedor,false,"");
 		//CotizadorPesos cotizadorPesos = new CotizadorPesos();
 		//producto1.setCotizador(cotizadorPesos);
 		ItemCompra itemDeCompra1 = new ItemCompra(producto1,2); 
@@ -24,7 +24,7 @@ public class ItemCompraTest {
 	@Test
 	public void calcularElTotalDeUnItemQueNoTieneStock() throws StockInsuficienteException{
 		Proveedor proveedor = new Proveedor("Proveedor de bebidas","48675678","proveedor@gmail.com",50);
-		Producto producto1= new Producto("Bebida" , "Coca cola", 100.0, 0,proveedor,false);
+		Producto producto1= new Producto("Bebida" , "Coca cola", 100.0, 0,proveedor,false,"");
 		//CotizadorPesos cotizadorPesos = new CotizadorPesos();
 		//producto1.setCotizador(cotizadorPesos);
 		assertThrows(StockInsuficienteException.class, ()-> {new ItemCompra(producto1,2);});

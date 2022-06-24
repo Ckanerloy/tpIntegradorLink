@@ -3,6 +3,7 @@ package ar.edu.utn.frba.tpIntegrador.DTO;
 import java.time.LocalDate;
 import java.util.Collection;
 
+import ar.edu.utn.frba.tpIntegrador.model.Cliente;
 import ar.edu.utn.frba.tpIntegrador.model.ItemCompra;
 import ar.edu.utn.frba.tpIntegrador.model.MedioDePago;
 import ar.edu.utn.frba.tpIntegrador.model.Promocion;
@@ -10,19 +11,19 @@ import ar.edu.utn.frba.tpIntegrador.model.Promocion;
 public class CarritoDeCompraDTO {
 	private Collection<ItemCompra> itemsCompras;
 	private Collection<Promocion> promociones;
-	private LocalDate fechaDeCompra;
 	private MedioDePago medioDePago;
+	private Cliente cliente;
 	private double precioTotalSinDescuento;
 	private double precioTotalConDescuento;
 
 	public CarritoDeCompraDTO(Collection<ItemCompra> itemsCompras, Collection<Promocion> promociones,
-			LocalDate fechaDeCompra, MedioDePago medioDePago, double precioTotalSinDescuento,
+			MedioDePago medioDePago, Cliente cliente,double precioTotalSinDescuento,
 			double precioTotalConDescuento) {
 		super();
 		this.itemsCompras = itemsCompras;
 		this.promociones = promociones;
-		this.fechaDeCompra = fechaDeCompra;
 		this.medioDePago = medioDePago;
+		this.cliente=cliente;
 		this.precioTotalSinDescuento = precioTotalSinDescuento;
 		this.precioTotalConDescuento = precioTotalConDescuento;
 	}
@@ -47,14 +48,6 @@ public class CarritoDeCompraDTO {
 		this.promociones = promociones;
 	}
 
-	public LocalDate getFechaDeCompra() {
-		return fechaDeCompra;
-	}
-
-	public void setFechaDeCompra(LocalDate fechaDeCompra) {
-		this.fechaDeCompra = fechaDeCompra;
-	}
-
 	public MedioDePago getMedioDePago() {
 		return medioDePago;
 	}
@@ -77,6 +70,14 @@ public class CarritoDeCompraDTO {
 
 	public void setPrecioTotalConDescuento(double precioTotalConDescuento) {
 		this.precioTotalConDescuento = precioTotalConDescuento;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	
 }

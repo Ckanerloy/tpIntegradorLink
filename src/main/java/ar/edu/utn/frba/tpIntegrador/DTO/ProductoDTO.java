@@ -7,6 +7,7 @@ public class ProductoDTO {
 	private int stock;
 	private Integer proveedorID;
 	private Boolean estaEnDolares;
+	private String imagen;
 	
 	public ProductoDTO() {
 		super();
@@ -69,6 +70,14 @@ public class ProductoDTO {
 
 	public void setEstaEnDolares(Boolean estaEnDolares) {
 		this.estaEnDolares = estaEnDolares;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	
 }

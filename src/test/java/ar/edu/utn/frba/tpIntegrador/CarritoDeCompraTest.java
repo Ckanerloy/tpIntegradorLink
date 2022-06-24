@@ -25,12 +25,12 @@ public class CarritoDeCompraTest {
 	@Test
 	public void CalcularPrecioDeOrdenDeCompraSinPromocion() throws StockInsuficienteException {
 		Proveedor proveedor1 = new Proveedor("Proveedor de bebidas","48675678","proveedor1@gmail.com",50);
-		Producto producto1= new Producto("Bebida" , "Coca cola", 150.0, 5,proveedor1,false);
+		Producto producto1= new Producto("Bebida" , "Coca cola", 150.0, 5,proveedor1,false,"");
 		//CotizadorPesos cotizadorPesos1 = new CotizadorPesos();
 		//producto1.setCotizadorDolar(cotizadorPesos1);
 		ItemCompra itemDeCompra1 = new ItemCompra(producto1,2); 
 		Proveedor proveedor2 = new Proveedor("Proveedor de Snacks","48585110","proveedor2@gmail.com",100);
-		Producto producto2= new Producto("Snacks" , "chetos", 50.0, 5,proveedor2,false);
+		Producto producto2= new Producto("Snacks" , "chetos", 50.0, 5,proveedor2,false,"");
 		//producto2.setCotizador(cotizadorPesos1);
 		ItemCompra itemDeCompra2 = new ItemCompra(producto2,4); 
 		Collection<ItemCompra> itemsCompras = Arrays.asList(itemDeCompra1,itemDeCompra2);
@@ -44,12 +44,12 @@ public class CarritoDeCompraTest {
 	@Test
 	public void CalcularPrecioDeOrdenDeCompraConUnaPromocionDeMedioDePago() throws StockInsuficienteException{
 		Proveedor proveedor1 = new Proveedor("Proveedor de bebidas","48675678","proveedor1@gmail.com",50);
-		Producto producto1= new Producto("Bebida" , "Coca cola", 150.0, 5,proveedor1,false);
+		Producto producto1= new Producto("Bebida" , "Coca cola", 150.0, 5,proveedor1,false,"");
 		//CotizadorPesos cotizadorPesos1 = new CotizadorPesos();
 		//producto1.setCotizador(cotizadorPesos1);
 		ItemCompra itemDeCompra1 = new ItemCompra(producto1,2); 
 		Proveedor proveedor2 = new Proveedor("Proveedor de Snacks","48585110","proveedor2@gmail.com",100);
-		Producto producto2= new Producto("Snacks" , "chetos", 50.0, 5,proveedor2,false);
+		Producto producto2= new Producto("Snacks" , "chetos", 50.0, 5,proveedor2,false,"");
 		//producto2.setCotizador(cotizadorPesos1);
 		ItemCompra itemDeCompra2 = new ItemCompra(producto2,4); 
 		Collection<ItemCompra> itemsCompras = Arrays.asList(itemDeCompra1,itemDeCompra2);
@@ -64,12 +64,12 @@ public class CarritoDeCompraTest {
 	@Test
 	public void CalcularPrecioDeOrdenDeCompraConUnaPromocionCuponProveedor() throws StockInsuficienteException{
 		Proveedor proveedor1 = new Proveedor("Proveedor de bebidas","48675678","proveedor1@gmail.com",50);
-		Producto producto1= new Producto("Bebida" , "Coca cola", 150.0, 5,proveedor1,false);
+		Producto producto1= new Producto("Bebida" , "Coca cola", 150.0, 5,proveedor1,false,"");
 		//CotizadorPesos cotizadorPesos1 = new CotizadorPesos();
 		//producto1.setCotizador(cotizadorPesos1);
 		ItemCompra itemDeCompra1 = new ItemCompra(producto1,2); 
 		Proveedor proveedor2 = new Proveedor("Proveedor de Snacks","48585110","proveedor2@gmail.com",100);
-		Producto producto2= new Producto("Snacks" , "chetos", 50.0, 5,proveedor2,false);
+		Producto producto2= new Producto("Snacks" , "chetos", 50.0, 5,proveedor2,false,"");
 		//producto2.setCotizador(cotizadorPesos1);
 		ItemCompra itemDeCompra2 = new ItemCompra(producto2,4); 
 		Collection<ItemCompra> itemsCompras = Arrays.asList(itemDeCompra1,itemDeCompra2);
@@ -84,12 +84,12 @@ public class CarritoDeCompraTest {
 	@Test
 	public void CalcularPrecioDeOrdenDeCompraConMembresia() throws StockInsuficienteException{
 		Proveedor proveedor1 = new Proveedor("Proveedor de bebidas","48675678","proveedor1@gmail.com",50);
-		Producto producto1= new Producto("Bebida" , "Coca cola", 150.0, 5,proveedor1,false);
+		Producto producto1= new Producto("Bebida" , "Coca cola", 150.0, 5,proveedor1,false,"");
 		//CotizadorPesos cotizadorPesos1 = new CotizadorPesos();
 		//producto1.setCotizador(cotizadorPesos1);
 		ItemCompra itemDeCompra1 = new ItemCompra(producto1,2); 
 		Proveedor proveedor2 = new Proveedor("Proveedor de Snacks","48585110","proveedor2@gmail.com",100);
-		Producto producto2= new Producto("Snacks" , "chetos", 50.0, 5,proveedor2,false);
+		Producto producto2= new Producto("Snacks" , "chetos", 50.0, 5,proveedor2,false,"");
 		//producto2.setCotizador(cotizadorPesos1);
 		ItemCompra itemDeCompra2 = new ItemCompra(producto2,4); 
 		Collection<ItemCompra> itemsCompras = Arrays.asList(itemDeCompra1,itemDeCompra2);
@@ -104,13 +104,13 @@ public class CarritoDeCompraTest {
 	@Test 
 	public void CalcularPrecioDeOrdenDeCompraSinPromocionEnDolares() throws StockInsuficienteException{
 		Proveedor proveedor1 = new Proveedor("Proveedor de bebidas","48675678","proveedor1@gmail.com",50);
-		Producto producto1= new Producto("Bebida" , "Coca cola", 150.0, 5,proveedor1,true);
+		Producto producto1= new Producto("Bebida" , "Coca cola", 150.0, 5,proveedor1,true,"");
 		//CotizadorDolar cotizadorDolar1 = new CotizadorDolar();
 		//producto1.setCotizadorDolar(cotizadorDolar1);
 		ItemCompra itemDeCompra1 = new ItemCompra(producto1,2); 
 		Proveedor proveedor2 = new Proveedor("Proveedor de Snacks","48585110","proveedor2@gmail.com",100);
 		//CotizadorDolar cotizadorDolar2 = new CotizadorDolar();
-		Producto producto2= new Producto("Snacks" , "chetos", 50.0, 5,proveedor2,true);
+		Producto producto2= new Producto("Snacks" , "chetos", 50.0, 5,proveedor2,true,"");
 		//producto2.setCotizadorDolar(cotizadorDolar1);
 		ItemCompra itemDeCompra2 = new ItemCompra(producto2,4); 
 		Collection<ItemCompra> itemsCompras = Arrays.asList(itemDeCompra1,itemDeCompra2);
@@ -119,7 +119,7 @@ public class CarritoDeCompraTest {
 		Cliente cliente=new Cliente("Camila Kaner Loy",LocalDate.now(),TipoDeDocumento.DNI,"40976081","48760011","camilakanerloy@gmail.com");
 		CarritoDeCompra carritoDeCompra = new CarritoDeCompra(promociones,LocalDate.now(), MedioDePago.EFECTIVO,cliente);
 		carritoDeCompra.setItemsCompras(itemsCompras);
-		assertEquals(carritoDeCompra.calcularPrecioTotalSinPromociones(),61390);
+		assertEquals(carritoDeCompra.calcularPrecioTotalSinPromociones(),61525);
 	}
 	
 }

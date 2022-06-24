@@ -25,7 +25,6 @@ public class CarritoDeCompra {
 	private Collection<ItemCompra> itemsCompras;
 	@ManyToMany
 	private Collection<Promocion> promociones;
-	private LocalDate fechaDeCompra;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "medioDePago")
 	private MedioDePago medioDePago;
@@ -41,7 +40,6 @@ public class CarritoDeCompra {
 		super();
 		this.itemsCompras = new ArrayList<>();
 		this.promociones = promociones;
-		this.fechaDeCompra = fechaDeCompra;
 		this.medioDePago = medioDePago;
 		this.cliente=cliente;
 	}
@@ -60,14 +58,6 @@ public class CarritoDeCompra {
 
 	public void setPromociones(Collection<Promocion> promociones) {
 		this.promociones = promociones;
-	}
-
-	public LocalDate getFechaDeCompra() {
-		return fechaDeCompra;
-	}
-
-	public void setFechaDeCompra(LocalDate fechaDeCompra) {
-		this.fechaDeCompra = fechaDeCompra;
 	}
 
 	public MedioDePago getMedioDePago() {
@@ -100,5 +90,9 @@ public class CarritoDeCompra {
 	
 	public double calcularPrecioTotalConPromociones(){
 		return this.calcularPrecioTotalSinPromociones()-promociones.stream().mapToDouble(x->x.aplicar(this)).sum();
+	}
+	
+	public void agregarItem(ItemCompra itemCompra) {
+		this.itemsCompras.add(itemCompra);
 	}
 }
