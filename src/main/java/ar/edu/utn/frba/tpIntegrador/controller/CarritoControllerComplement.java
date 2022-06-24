@@ -1,5 +1,6 @@
 package ar.edu.utn.frba.tpIntegrador.controller;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -16,14 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 import ar.edu.utn.frba.tpIntegrador.DTO.CarritoDeCompraDTO;
 import ar.edu.utn.frba.tpIntegrador.model.CarritoDeCompra;
 import ar.edu.utn.frba.tpIntegrador.model.Cliente;
+import ar.edu.utn.frba.tpIntegrador.model.CuponProveedor;
 import ar.edu.utn.frba.tpIntegrador.model.ItemCompra;
 import ar.edu.utn.frba.tpIntegrador.model.MedioDePago;
+import ar.edu.utn.frba.tpIntegrador.model.OrdenDeCompra;
 import ar.edu.utn.frba.tpIntegrador.model.Producto;
+import ar.edu.utn.frba.tpIntegrador.model.Promocion;
 import ar.edu.utn.frba.tpIntegrador.model.StockInsuficienteException;
 import ar.edu.utn.frba.tpIntegrador.repo.RepoCarritoDeCompra;
 import ar.edu.utn.frba.tpIntegrador.repo.RepoCliente;
 import ar.edu.utn.frba.tpIntegrador.repo.RepoItemCompra;
+import ar.edu.utn.frba.tpIntegrador.repo.RepoOrdenDeCompra;
 import ar.edu.utn.frba.tpIntegrador.repo.RepoProducto;
+import ar.edu.utn.frba.tpIntegrador.repo.RepoPromoCuponProveedor;
+import ar.edu.utn.frba.tpIntegrador.repo.RepoPromocion;
 
 @CrossOrigin
 @RestController
@@ -38,6 +45,12 @@ public class CarritoControllerComplement {
 	private RepoProducto repoProducto;
 	@Autowired
 	private RepoItemCompra repoItemCompra;
+	@Autowired
+	private RepoPromocion repoPromocion;
+	@Autowired
+	private RepoPromoCuponProveedor repoCuponProveedor;
+	@Autowired
+	private RepoOrdenDeCompra repoOrdenDeCompra;
 
 	@GetMapping("/{clienteID}/carritoDeCompras")
 	public CarritoDeCompraDTO get(@PathVariable("clienteID") UUID clienteID) {
@@ -87,9 +100,19 @@ public class CarritoControllerComplement {
 	}
 	
 	@Transactional
-	@GetMapping("/{clienteID}/cuponProveedor/{cuponProveedorID}")
+	@PostMapping("/{clienteID}/cuponProveedor/{cuponProveedorID}")
 	public void get(@PathVariable("clienteID") UUID clienteID,@PathVariable("cuponProveedorID") Integer cuponProveedorID) {
+		Optional<Cliente> opcionalCliente= repoCliente.findById(clienteID);
+		Cliente cliente= opcionalCliente.get();
 		
+		Optional<CarritoDeCompra> opcionalCarritoDeCompra= repoCarritoDeCompra.findByCliente(cliente);
+		CarritoDeCompra carritoDeCompra=opcionalCarritoDeCompra.get();
+		
+		Optional<CuponProveedor> opcionalCupon = repoCuponProveedor.findById(cuponProveedorID);
+		if(!opcionalCupon.isEmpty()) {
+			CuponProveedor cuponProveedor = opcionalCupon.get();
+			carritoDeCompra.agregarPromocion(cuponProveedor);
+		}
 	}
 	
 	@Transactional
@@ -111,5 +134,28 @@ public class CarritoControllerComplement {
 				carritoDeCompra.setMedioDePago(MedioDePago.TARJETA_DEBITO);
 			}
 		}
+	}
+	
+	@Transactional
+	@PostMapping("/{clienteID}/carrito")
+	public void limpiarCarrito(@PathVariable("clienteID") UUID clienteID){
+		Optional<Cliente> opcionalCliente= repoCliente.findById(clienteID);
+		Cliente cliente= opcionalCliente.get();
+		
+		Optional<CarritoDeCompra> opcionalCarritoDeCompra= repoCarritoDeCompra.findByCliente(cliente);
+		CarritoDeCompra carritoDeCompra=opcionalCarritoDeCompra.get();
+		
+		OrdenDeCompra ordenDeCompra=new OrdenDeCompra();
+		ordenDeCompra.setItemsCompras(carritoDeCompra.getItemsCompras());
+		ordenDeCompra.setMedioDePago(carritoDeCompra.getMedioDePago());
+		ordenDeCompra.setPrecioTotalSinDescuento(carritoDeCompra.calcularPrecioTotalSinPromociones());
+		ordenDeCompra.setPrecioTotalConDescuento(carritoDeCompra.calcularPrecioTotalConPromociones());
+		
+		repoOrdenDeCompra.save(ordenDeCompra);
+		cliente.realizarComprar(ordenDeCompra);
+		
+		carritoDeCompra.setItemsCompras(new ArrayList<ItemCompra>());
+		
+		
 	}
 }

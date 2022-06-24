@@ -95,4 +95,8 @@ public class CarritoDeCompra {
 	public void agregarItem(ItemCompra itemCompra) {
 		this.itemsCompras.add(itemCompra);
 	}
+	
+	public void agregarPromocion(Promocion promocion) {
+		this.promociones.add(promocion);
+	}
 }

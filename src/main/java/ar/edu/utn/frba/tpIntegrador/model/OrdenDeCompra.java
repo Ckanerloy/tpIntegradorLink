@@ -22,9 +22,6 @@ public class OrdenDeCompra {
 	@OneToMany
 	@JoinColumn(name = "ordenDeCompra_id")
 	private Collection<ItemCompra> itemsCompras;
-	@ManyToMany
-	private Collection<Promocion> promociones;
-	private LocalDate fechaDeCompra;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "medioDePago")
 	private MedioDePago medioDePago;
@@ -36,12 +33,10 @@ public class OrdenDeCompra {
 		super();
 	}
 	
-	public OrdenDeCompra(Collection<Promocion> promociones,
+	public OrdenDeCompra(
 			LocalDate fechaDeCompra, MedioDePago medioDePago,double precioTotalSinDescuento ,double precioTotalConDescuento) {
 		super();
 		this.itemsCompras = new ArrayList<>();
-		this.promociones = promociones;
-		this.fechaDeCompra = fechaDeCompra;
 		this.medioDePago = medioDePago;
 		this.precioTotalSinDescuento=precioTotalSinDescuento;
 		this.precioTotalConDescuento=precioTotalConDescuento;
@@ -53,22 +48,6 @@ public class OrdenDeCompra {
 	
 	public void setItemsCompras(Collection<ItemCompra> itemsCompras) {
 		this.itemsCompras = itemsCompras;
-	}
-
-	public Collection<Promocion> getPromociones() {
-		return promociones;
-	}
-
-	public void setPromociones(Collection<Promocion> promociones) {
-		this.promociones = promociones;
-	}
-
-	public LocalDate getFechaDeCompra() {
-		return fechaDeCompra;
-	}
-
-	public void setFechaDeCompra(LocalDate fechaDeCompra) {
-		this.fechaDeCompra = fechaDeCompra;
 	}
 
 	public MedioDePago getMedioDePago() {
